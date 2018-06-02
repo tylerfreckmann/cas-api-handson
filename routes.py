@@ -18,41 +18,41 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+    return render_template('index.html')
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
-	if request.method == 'POST':
-		# check if the post request has the file part
-		if 'file' not in request.files:
-			print('No file part')
-			return redirect(url_for('index'))
-		file = request.files['file']
-		if file.filename == '':
-			print('No selected file')
-			return redirect(url_for('index'))
-		if file:
-			filename = secure_filename(file.filename)
-			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-			file.save(filepath)
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            print('No file part')
+            return redirect(url_for('index'))
+        file = request.files['file']
+        if file.filename == '':
+            print('No selected file')
+            return redirect(url_for('index'))
+        if file:
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
 
-			# CAS Image Recognition
+            # CAS Image Recognition
 
-			# scores should be a dictionary of the score table
-			label = scores.pop('I__label_')
-			return jsonify({'imgUrl': url_for('uploaded_file', filename=filename),
-				'label': label,
-				'scores': scores})
+            # scores should be a dictionary of the score table
+            label = scores.pop('I__label_')
+            return jsonify({'imgUrl': url_for('uploaded_file', filename=filename),
+                'label': label,
+                'scores': scores})
 
-	return redirect(url_for('index'))
+    return redirect(url_for('index'))
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-	return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 def allowed_file(filename):
-	return '.' in filename and \
-		filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == '__main__':
-	app.run(debug=True, host=APP_IP, port=APP_PORT)
+    app.run(debug=True, host=APP_IP, port=APP_PORT)

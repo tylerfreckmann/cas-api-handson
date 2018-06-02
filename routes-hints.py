@@ -39,7 +39,7 @@ def upload():
 			# CAS Image Recognition
 
 			# FILL IN THE FOLLOWING COMMENTS WITH CODE THAT DOES WHAT EACH LINE DESCRIBES
-			# create a CAS session on localhost:5570 with the AUTHINFO file
+			# create a CAS session on localhost:5570 with your CAS user
 			# load the image action set
 			# load the image from the filepath into CAS
 			# load the astore action set

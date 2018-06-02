@@ -38,7 +38,17 @@ def upload():
 
 			# CAS Image Processing
 
-			# scores should be a dictionary of the score table
+			# FILL IN THE FOLLOWING COMMENTS WITH CODE THAT DOES WHAT EACH LINE DESCRIBES
+			# create a CAS session on localhost:5570 with the AUTHINFO file
+			# load the image action set
+			# load the image from the filepath into CAS
+			# load the astore action set
+			# score the image table you created with the ASTORE in ASTORE_LIB
+			# fetch the score results from the score table you created in CAS
+			# isolate the Fetch object from the score results, get the first row, turn it into a python dictionary, and save it to a variable names scores
+			# end the CAS session
+
+			# the rest should be good to go :)
 			label = scores.pop('I__label_')
 			return jsonify({'imgUrl': url_for('uploaded_file', filename=filename),
 				'label': label,

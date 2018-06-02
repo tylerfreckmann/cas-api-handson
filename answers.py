@@ -37,9 +37,14 @@ def upload():
 			file.save(filepath)
 
 			# CAS Image Processing
-
-			# scores should be a dictionary of the score table
+			s = swat.CAS('localhost', 5570, authinfo=AUTHINFO)
+			s.loadactionset('image')
+			s.loadimages(filepath, casout={'name':'img'})
+			s.loadactionset('astore')
+			s.score(table={'name':'img'}, out={'name':'score'}, rstore={'name':ASTORE, 'caslib':ASTORE_LIB})
+			scores = s.fetch(table={'name':'score'})['Fetch'].loc[0,:].to_dict()
 			label = scores.pop('I__label_')
+			s.endSession()
 			return jsonify({'imgUrl': url_for('uploaded_file', filename=filename),
 				'label': label,
 				'scores': scores})

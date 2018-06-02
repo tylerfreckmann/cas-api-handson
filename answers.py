@@ -36,7 +36,7 @@ def upload():
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(filepath)
 
-			# CAS Image Processing
+			# CAS Image Recognition
 			s = swat.CAS('localhost', 5570, authinfo=AUTHINFO)
 			s.loadactionset('image')
 			s.loadimages(filepath, casout={'name':'img'})

@@ -36,7 +36,7 @@ def upload():
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(filepath)
 
-			# CAS Image Processing
+			# CAS Image Recognition
 
 			# scores should be a dictionary of the score table
 			label = scores.pop('I__label_')

@@ -36,7 +36,7 @@ def upload():
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(filepath)
 
-			# CAS Image Processing
+			# CAS Image Recognition
 
 			# FILL IN THE FOLLOWING COMMENTS WITH CODE THAT DOES WHAT EACH LINE DESCRIBES
 			# create a CAS session on localhost:5570 with the AUTHINFO file

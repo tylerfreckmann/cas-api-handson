@@ -49,7 +49,7 @@ See the [SAS Deep Learning Programming Guide](http://support.sas.com/documentati
 to see how to build a CNN image recognition model and `astore`.
 
 With those configuration variables set, the app is ready to run. Run it
-with `python routes.py`. Visit the app at the by going to the right hostname/IP/port
+with `python answers.py`. Visit the app at the by going to the right hostname/IP/port
 that was set in the configuration variables. For example, if the app is
 listening on all IPs (`APP_IP='0.0.0.0'`) and port 7050 (`APP_PORT=7050`)
 then the app will be running at http://*hostname-where-app-is-running*:7050/
